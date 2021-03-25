@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.EFCore5Demos.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../:\Git\EFCore5Demos\.idea\.idea.EFCore5Demos\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
