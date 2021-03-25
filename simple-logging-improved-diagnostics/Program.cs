@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using Chinook;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace simple_logging_improved_diagnostics

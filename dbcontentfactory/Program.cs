@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using Chinook;
-using Microsoft.Data.SqlClient;
+﻿using Chinook;
 
 namespace dbcontentfactory
 {
