@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Chinook;
+using Microsoft.EntityFrameworkCore;
 
 namespace required_1_on_1_dependants
 {
@@ -8,6 +10,16 @@ namespace required_1_on_1_dependants
         static void Main()
         {
             using var db = new ChinookContext();
+            
+            var artists = db.Artists
+                .Include(e => e.Albums.Where(a => a.Title.Contains("the")))
+                .AsSplitQuery()
+                .ToList();
+            
+            foreach (var artist in artists)
+            {
+                Console.WriteLine($"Found Album: {artist.Name} - {artist.Albums.Count}");
+            }
 
             
         }

@@ -47,8 +47,6 @@ namespace savedchanges_interception_auditing
             }
         }
 
-        // Look at the audit trail
-
         using (var context =
             new AuditContext(@"Server=(localdb)\mssqllocaldb;Database=Demo.Audit;Trusted_Connection=True;ConnectRetryCount=0"))
         {
