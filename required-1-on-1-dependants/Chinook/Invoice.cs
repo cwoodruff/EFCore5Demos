@@ -12,7 +12,7 @@ namespace Chinook
             InvoiceLines = new HashSet<InvoiceLine>();
         }
 
-        public int InvoiceId { get; set; }
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public DateTime InvoiceDate { get; set; }
         public string BillingAddress { get; set; }

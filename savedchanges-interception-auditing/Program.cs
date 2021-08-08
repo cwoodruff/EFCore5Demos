@@ -48,7 +48,7 @@ namespace savedchanges_interception_auditing
         }
 
         using (var context =
-            new AuditContext(@"Server=(localdb)\mssqllocaldb;Database=Demo.Audit;Trusted_Connection=True;ConnectRetryCount=0"))
+            new AuditContext(@"Server=(localdb)\mssqllocaldb;Database=Demo5.Audit;Trusted_Connection=True;ConnectRetryCount=0"))
         {
             foreach (var audit in context.SaveChangesAudits.Include(e => e.Entities).ToList())
             {
@@ -71,7 +71,7 @@ namespace savedchanges_interception_auditing
     private static async Task CreateDatabases()
     {
         using (var context =
-            new AuditContext(@"Server=(localdb)\mssqllocaldb;Database=Demo.Audit;Trusted_Connection=True;ConnectRetryCount=0"))
+            new AuditContext(@"Server=(localdb)\mssqllocaldb;Database=Demo5.Audit;Trusted_Connection=True;ConnectRetryCount=0"))
         {
             await context.Database.EnsureDeletedAsync();
             await context.Database.EnsureCreatedAsync();

@@ -11,7 +11,7 @@ namespace Chinook
             PlaylistTracks = new HashSet<PlaylistTrack>();
         }
 
-        public int PlaylistId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<PlaylistTrack> PlaylistTracks { get; set; }

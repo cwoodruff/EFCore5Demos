@@ -11,7 +11,7 @@ namespace Chinook
             Tracks = new HashSet<Track>();
         }
 
-        public int AlbumId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int ArtistId { get; set; }
 

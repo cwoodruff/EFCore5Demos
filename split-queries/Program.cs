@@ -30,7 +30,7 @@ namespace split_queries
             
             foreach (var invoice in invoices)
             {
-                Console.WriteLine($"Found Invoice: {invoice.InvoiceId}");
+                Console.WriteLine($"Found Invoice: {invoice.Id}");
             }
         }
     }

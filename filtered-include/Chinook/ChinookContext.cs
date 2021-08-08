@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 #nullable disable
 
@@ -7,12 +7,12 @@ namespace Chinook
 {
     public partial class ChinookContext : DbContext
     {
-        public ChinookContext()
-        {
-        }
-
         public ChinookContext(DbContextOptions<ChinookContext> options)
             : base(options)
+        {
+        }
+        
+        public ChinookContext()
         {
         }
 
@@ -33,8 +33,7 @@ namespace Chinook
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-6C4SF7E;Database=Chinook;Trusted_Connection=True;")
-                    .LogTo(Console.WriteLine);
+                optionsBuilder.UseSqlServer("Server=DESKTOP-6C4SF7E;Database=Chinook;Trusted_Connection=True;");
             }
         }
 
@@ -48,7 +47,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.ArtistId, "IFK_Artist_Album");
 
-                entity.HasIndex(e => e.AlbumId, "IPK_ProductItem");
+                entity.HasIndex(e => e.Id, "IPK_ProductItem");
 
                 entity.Property(e => e.Title)
                     .IsRequired()
@@ -65,7 +64,7 @@ namespace Chinook
             {
                 entity.ToTable("Artist");
 
-                entity.HasIndex(e => e.ArtistId, "IPK_Artist");
+                entity.HasIndex(e => e.Id, "IPK_Artist");
 
                 entity.Property(e => e.Name).HasMaxLength(120);
             });
@@ -76,7 +75,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.SupportRepId, "IFK_Employee_Customer");
 
-                entity.HasIndex(e => e.CustomerId, "IPK_Customer");
+                entity.HasIndex(e => e.Id, "IPK_Customer");
 
                 entity.Property(e => e.Address).HasMaxLength(70);
 
@@ -118,7 +117,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.ReportsTo, "IFK_Employee_ReportsTo");
 
-                entity.HasIndex(e => e.EmployeeId, "IPK_Employee");
+                entity.HasIndex(e => e.Id, "IPK_Employee");
 
                 entity.Property(e => e.Address).HasMaxLength(70);
 
@@ -160,7 +159,7 @@ namespace Chinook
             {
                 entity.ToTable("Genre");
 
-                entity.HasIndex(e => e.GenreId, "IPK_Genre");
+                entity.HasIndex(e => e.Id, "IPK_Genre");
 
                 entity.Property(e => e.Name).HasMaxLength(120);
             });
@@ -171,7 +170,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.CustomerId, "IFK_Customer_Invoice");
 
-                entity.HasIndex(e => e.InvoiceId, "IPK_Invoice");
+                entity.HasIndex(e => e.Id, "IPK_Invoice");
 
                 entity.Property(e => e.BillingAddress).HasMaxLength(70);
 
@@ -202,7 +201,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.TrackId, "IFK_ProductItem_InvoiceLine");
 
-                entity.HasIndex(e => e.InvoiceLineId, "IPK_InvoiceLine");
+                entity.HasIndex(e => e.Id, "IPK_InvoiceLine");
 
                 entity.Property(e => e.UnitPrice).HasColumnType("numeric(10, 2)");
 
@@ -223,7 +222,7 @@ namespace Chinook
             {
                 entity.ToTable("MediaType");
 
-                entity.HasIndex(e => e.MediaTypeId, "IPK_MediaType");
+                entity.HasIndex(e => e.Id, "IPK_MediaType");
 
                 entity.Property(e => e.Name).HasMaxLength(120);
             });
@@ -232,7 +231,7 @@ namespace Chinook
             {
                 entity.ToTable("Playlist");
 
-                entity.HasIndex(e => e.PlaylistId, "IPK_Playlist");
+                entity.HasIndex(e => e.Id, "IPK_Playlist");
 
                 entity.Property(e => e.Name).HasMaxLength(120);
             });
@@ -273,7 +272,7 @@ namespace Chinook
 
                 entity.HasIndex(e => e.MediaTypeId, "IFK_MediaType_Track");
 
-                entity.HasIndex(e => e.TrackId, "IPK_Track");
+                entity.HasIndex(e => e.Id, "IPK_Track");
 
                 entity.Property(e => e.Composer).HasMaxLength(220);
 
