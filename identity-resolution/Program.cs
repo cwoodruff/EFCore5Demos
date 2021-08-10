@@ -11,7 +11,7 @@ namespace identity_resolution
         {
             using var db = new ChinookContext();
             
-            var albumA = db.Albums.Single(e => e.Id == 1);
+            var albumA = db.Albums.AsNoTrackingWithIdentityResolution().Single(e => e.Id == 1);
             var albumB = new Album { Id = 1, Title = "London Calling" };
 
             try
