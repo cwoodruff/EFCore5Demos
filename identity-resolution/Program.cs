@@ -11,13 +11,16 @@ namespace identity_resolution
         {
             using var db = new ChinookContext();
             
-            var albums = db.Albums
-                .AsNoTrackingWithIdentityResolution()
-                .ToList();
-            
-            foreach (var album in albums)
+            var albumA = db.Albums.Single(e => e.Id == 1);
+            var albumB = new Album { Id = 1, Title = "London Calling" };
+
+            try
             {
-                Console.WriteLine($"Found Album: {album.Title}");
+                db.Update(albumB); // This will throw
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{e.GetType().FullName}: {e.Message}");
             }
             
         }
