@@ -32,6 +32,8 @@ namespace many_to_many
         {
             using (var db = new BloggingContext())
             {
+                db.Database.EnsureDeleted();
+                    
                 if (db.Database.EnsureCreated())
                 {
                     var fishBlog = new Blog {Url = "http://sample.com/blogs/fish"};
@@ -66,7 +68,7 @@ namespace many_to_many
         {
             optionsBuilder
                 .UseSqlServer(
-                    @"Server=(localdb)\mssqllocaldb;Database=Demo.ManyToMany;Trusted_Connection=True;ConnectRetryCount=0")
+                    @"Server=(localdb)\mssqllocaldb;Database=ManyToMany;Trusted_Connection=True;ConnectRetryCount=0")
                 .UseLoggerFactory(loggerFactory);
         }
 
